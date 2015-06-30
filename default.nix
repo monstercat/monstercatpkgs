@@ -6,7 +6,7 @@ let
 in rec {
   netrcFile = if (builtins.tryEval <netrc-file>).success
     then <netrc-file>
-    else abort "set -I netrc-file=$HOME/netrc to access private repositories. It must not have a dot in the filename";
+    else builtins.trace "set -I netrc-file=$HOME/netrc to access private repositories. It must not have a dot in the filename" null;
 
   csv-parser = callPackage ./pkgs/haskell/csv-parser.nix {};
 
