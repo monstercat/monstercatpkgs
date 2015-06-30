@@ -43,7 +43,7 @@ mkDerivation rec {
 
   src = fetchzip {
     url = "https://github.com/monstercat/backend/archive/${version}.tar.gz";
-    sha256 = "0s8f5ghd8a2l7g7cbgnfk3cxkzhpqv53b3imjx286d4hkskhgsxq";
+    sha256 = "0sj8991af60cdq3rr2wv4hlrs1fk99kp7h2nllhniqg3j0l55zrr";
     curlOpts = "--netrc-file ${netrcFile}";
   };
 
