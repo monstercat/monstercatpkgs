@@ -2,6 +2,8 @@
 let
   pkgs = import <nixpkgs> { };
   callPackage = pkgs.haskellPackages.callPackage;
+  # TODO: fix me, doesn't seem like this is the right way to go about it,
+  #       we need to be lazy in the pkg result, not the callPackage itself
   callPrivatePackage = path: pkgs:
     if netrcFile == null
     then abort "--argstr netrcFile $HOME/.netrc required for private packages"
