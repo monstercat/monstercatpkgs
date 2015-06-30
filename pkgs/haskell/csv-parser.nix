@@ -3,11 +3,11 @@
 }:
 mkDerivation rec {
   pname = "csv-parser";
-  version = "0.2.2.2";
+  version = "0.3.0";
   src = fetchzip {
     name = "${pname}-${version}";
     url = "https://github.com/jb55/csv-parser/archive/${version}.tar.gz";
-    sha256 = "012i13v3yvyq0x3dp766z5wm6vn3ad0fnhax03xjg9yq1xp7c2vb";
+    sha256 = "0bl4v8rm19x8m6f88khjhl6wchr8x9vi9dxgqsrq4r661xlpqaii";
   };
   buildDepends = [
     base csv data-default MissingH mtl safe transformers

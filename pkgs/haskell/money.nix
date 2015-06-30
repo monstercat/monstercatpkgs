@@ -5,7 +5,7 @@ mkDerivation rec {
   src = fetchzip {
     name = "${pname}-${version}";
     url = "https://github.com/jb55/money/archive/${version}.tar.gz";
-    sha256 = "012i13v3yvyq0x3dp766z5wm6vn3ad0fnhax03xjg9yq1xp7c2vb";
+    sha256 = "0q280njcbmblrzv5qjmkn9hfpb8m2dpahkza55bqlj7y9akimdrd";
   };
   buildDepends = [ base data-default Decimal ];
   homepage = "https://github.com/jb55/money";
