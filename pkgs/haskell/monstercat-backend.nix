@@ -39,7 +39,7 @@
 
 mkDerivation rec {
   pname = "monstercat-backend";
-  version = "0.4.0";
+  version = "1.0.0";
 
   src = fetchzip {
     url = "https://github.com/monstercat/backend/archive/${version}.tar.gz";
