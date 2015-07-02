@@ -1,8 +1,9 @@
 { nixpkgs ? import <nixpkgs> {}
+, compiler ? "ghc7101"
 }:
 let
   pkgs = nixpkgs;
-  callPackage = pkgs.haskellPackages.callPackage;
+  callPackage = nixpkgs.pkgs.haskell.packages.${compiler}.callPackage;
 in rec {
   netrcFile = if (builtins.tryEval <netrc-file>).success
     then <netrc-file>
