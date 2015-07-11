@@ -39,11 +39,11 @@
 
 mkDerivation rec {
   pname = "monstercat-backend";
-  version = "1.0.0";
+  version = "1.1.0";
 
   src = fetchzip {
     url = "https://github.com/monstercat/backend/archive/${version}.tar.gz";
-    sha256 = "0sj8991af60cdq3rr2wv4hlrs1fk99kp7h2nllhniqg3j0l55zrr";
+    sha256 = "1xj1z7nyww2zirnrsh50i8xw7alidaj9fpfz8qvj12d6syiwrqlj";
     curlOpts = "--netrc-file ${netrcFile}";
   };
 
