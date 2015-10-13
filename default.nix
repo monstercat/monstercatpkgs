@@ -1,17 +1,12 @@
 { nixpkgs ? import <nixpkgs> {}
-, profiling ? false
-, compiler ? "ghc784"
+, haskellPackages ? null
 }:
 let
   pkgs = nixpkgs;
-  haskellPackages = if profiling then nixpkgs.pkgs.haskell.packages.${compiler}.override {
-    overrides = self: super: {
-      mkDerivation = args: super.mkDerivation (args // {
-        enableLibraryProfiling = true;
-      });
-    };
-  } else nixpkgs.pkgs.haskell.packages.${compiler};
-  callPackage = haskellPackages.callPackage;
+  hp = if haskellPackages == null
+         then pkgs.haskellPackages
+         else haskellPackages;
+  callPackage = hp.callPackage;
 in rec {
   netrcFile = if (builtins.tryEval <netrc-file>).success
     then <netrc-file>
