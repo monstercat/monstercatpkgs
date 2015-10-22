@@ -1,13 +1,13 @@
 { stdenv, fetchFromGitHub }:
 stdenv.mkDerivation rec {
   name = "csv-delim-${version}";
-  version = "0.1";
+  version = "0.1.1";
 
   src = fetchFromGitHub {
     owner = "jb55";
     repo = "csv-delim";
-    rev = "6f729928c76d38b6f45d3d7d25d5196450f1a9c5";
-    sha256 = "0a0nli8frrzkw0nyw9hs3f1i2gyhwg1v4frgfn6sqcbcgfdkrgxq";
+    rev = "5adb97b546326b414669ae2ace6da5848215bbdb";
+    sha256 = "0p3d6gyr157krynxh0gjzn11j9zq36c9i6754sj4bi0pag1w8030";
   };
 
   makeFlags = "PREFIX=$(out)";
