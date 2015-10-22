@@ -3,26 +3,30 @@
 }:
 let
   pkgs = nixpkgs;
+  stdenv = pkgs.stdenv;
   hp = if haskellPackages == null
          then pkgs.haskellPackages
          else haskellPackages;
-  callPackage = hp.callPackage;
+  callHsPackage = hp.callPackage;
+  callPackage = pkgs.callPackage;
 in rec {
   netrcFile = if (builtins.tryEval <netrc-file>).success
     then <netrc-file>
     else builtins.trace "set -I netrc-file=$HOME/netrc to access private repositories. It must not have a dot in the filename" null;
 
-  csv-parser = callPackage ./pkgs/haskell/csv-parser.nix {};
+  csv-parser = callHsPackage ./pkgs/haskell/csv-parser.nix {};
 
-  flexible = callPackage ./pkgs/haskell/flexible.nix {};
+  flexible = callHsPackage ./pkgs/haskell/flexible.nix {};
 
-  flexible-instances = callPackage ./pkgs/haskell/flexible-instances.nix {
+  flexible-instances = callHsPackage ./pkgs/haskell/flexible-instances.nix {
     inherit flexible;
   };
 
-  money = callPackage ./pkgs/haskell/money.nix {};
+  csv-delim = callPackage ./pkgs/csv-delim/default.nix {};
 
-  monstercat-backend = callPackage ./pkgs/haskell/monstercat-backend.nix {
+  money = callHsPackage ./pkgs/haskell/money.nix {};
+
+  monstercat-backend = callHsPackage ./pkgs/haskell/monstercat-backend.nix {
     inherit netrcFile flexible flexible-instances;
   };
 }
