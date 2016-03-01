@@ -1,32 +1,37 @@
-{ nixpkgs ? import <nixpkgs> {}
+{ pkgs ? null
 , haskellPackages ? null
 }:
 let
-  pkgs = nixpkgs;
-  stdenv = pkgs.stdenv;
+  stdenv = pkgs_.stdenv;
+  nixpkgs = import <nixpkgs> {};
+  pkgs_ = if pkgs == null then nixpkgs.pkgs else pkgs;
   hp = if haskellPackages == null
-         then pkgs.haskellPackages
+         then pkgs_.haskellPackages
          else haskellPackages;
   callHsPackage = hp.callPackage;
-  callPackage = pkgs.callPackage;
-in rec {
-  netrcFile = if (builtins.tryEval <netrc-file>).success
-    then <netrc-file>
-    else builtins.trace "set -I netrc-file=$HOME/netrc to access private repositories. It must not have a dot in the filename" null;
-
-  csv-parser = callHsPackage ./pkgs/haskell/csv-parser.nix {};
-
-  flexible = callHsPackage ./pkgs/haskell/flexible.nix {};
-
-  flexible-instances = callHsPackage ./pkgs/haskell/flexible-instances.nix {
-    inherit flexible;
-  };
-
+  overrideCabal = pkgs_.haskell.lib.overrideCabal;
+  callPackage = pkgs_.callPackage;
+in {
   csv-delim = callPackage ./pkgs/csv-delim/default.nix {};
 
-  money = callHsPackage ./pkgs/haskell/money.nix {};
+  haskellPackages = rec {
+    csv-parser = callHsPackage ./pkgs/haskell/csv-parser.nix {};
 
-  monstercat-backend = callHsPackage ./pkgs/haskell/monstercat-backend.nix {
-    inherit netrcFile flexible flexible-instances;
+    flexible = callHsPackage ./pkgs/haskell/flexible.nix {};
+
+    flexible-instances = callHsPackage ./pkgs/haskell/flexible-instances.nix {
+      inherit flexible;
+    };
+
+    money = callHsPackage ./pkgs/haskell/money.nix {};
+
+    # monstercat-backend = callHsPackage ./pkgs/haskell/monstercat-backend.nix {
+    #   inherit flexible flexible-instances;
+    # };
+
+    # payment = callHsPackage ./pkgs/haskell/payment {
+    #   inherit flexible flexible-instances overrideCabal;
+    # };
+
   };
 }
