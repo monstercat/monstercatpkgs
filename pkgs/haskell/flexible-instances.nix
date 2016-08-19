@@ -3,11 +3,11 @@
 }:
 mkDerivation rec {
   pname = "flexible-instances";
-  version = "0.3.0";
+  version = "0.4.0";
   src = fetchFromGitHub {
     repo = "${pname}";
     owner = "jb55";
-    sha256 = "1yffdlyhn7y2637r4j78niplz9b6rydf3y12hgzk6a98ap9fiqy7";
+    sha256 = "0b5fnl4sx18s8yf5pc8lampl3rmf4s57zkzrjglbvhanhhl3zs0p";
     rev = version;
   };
   buildDepends = [
