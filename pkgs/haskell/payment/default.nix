@@ -1,55 +1,31 @@
-{ mkDerivation
-, Decimal
-, MissingH
-, QuickCheck
-, aeson
-, aeson-pretty
-, ansi-wl-pprint
-, async
-, attoparsec
-, base
-, bytestring
-, cased
-, cassava
-, data-default
-, directory
-, fetchgitPrivate
-, filepath
-, flexible
-, flexible-instances
-, foldl
-, hashable
-, keys
-, lens
-, lens-aeson
-, lifted-base
-, money
-, monstercat-backend
-, mtl
-, options
-, parsec
-, pipes
-, pipes-bytestring
-, fetchFromGitHub
-, pipes-csv
-, pipes-safe
-, random
-, safe
-, stdenv
-, syb
-, text
-, time
-, transformers
-, unordered-containers
-, uuid
-, yaml
-, overrideCabal
-, haskellPackages
+{ nixpkgs ? import <nixpkgs> {}
+, profiling ? false
+, monstercatpkgs
+, compiler ? null
 }:
-let haskellOverrides = super: {
+let pkgs = nixpkgs.pkgs;
+    overrideCabal = pkgs.haskell.lib.overrideCabal;
+    haskellOverrides = super: {
+      postgresql-simple = overrideCabal super.postgresql-simple (attrs: {
+        # src = /home/jb55/dev/haskell/postgresql-simple;
+        src = pkgs.fetchFromGitHub {
+          owner  = "jb55";
+          repo   = "postgresql-simple";
+          rev    = "0e93ae2040f360fa624f031930b45728b110e155";
+          sha256 = "04npgh3sxdnhlc5864d6m9raz47sr9awgydni0837ysmdr9zj17d";
+        };
+      });
+      pipes-postgresql-simple = overrideCabal super.pipes-postgresql-simple (attrs: {
+        src = pkgs.fetchFromGitHub {
+          owner  = "jb55";
+          repo   = "pipes-postgresql-simple";
+          rev    = "dbfbfa4aad8481642ed03a3d97ca4d46983a9e79";
+          sha256 = "1wq5x617gilxr46zsqvam2vz1isbasg7f71wzrk2xrnr84fb0980";
+        };
+      });
       pipes-csv = overrideCabal super.pipes-csv (attrs: {
         version = "1.4.2";
-        src = fetchFromGitHub {
+        src = pkgs.fetchFromGitHub {
           owner = "jb55";
           repo = "pipes-csv";
           rev = "061cff94a67b9b090260e0f31eb6eeeed2952632";
@@ -58,7 +34,7 @@ let haskellOverrides = super: {
       });
       cassava = overrideCabal super.cassava (attrs: {
         version = "0.4.3.1";
-        src = fetchFromGitHub {
+        src = pkgs.fetchFromGitHub {
           owner = "jb55";
           repo = "cassava";
           rev = "2eb6e29bd5e141c1a9f0e980f7ac1c915e06e02a";
@@ -66,59 +42,20 @@ let haskellOverrides = super: {
         };
       });
     };
-    customHaskellPackages = haskellPackages.override {
-      overrides = self: super: haskellOverrides super;
+    baseHaskellPackages =
+      if compiler != null
+        then pkgs.haskell.packages.${compiler}
+        else pkgs.haskellPackages;
+    profilingOverride = super: if profiling then {
+      mkDerivation = args: super.mkDerivation (args // {
+        enableLibraryProfiling = true;
+      });
+    } else {};
+    haskellPackages = baseHaskellPackages.override {
+      overrides = self: super: profilingOverride super // haskellOverrides super;
     };
-in mkDerivation {
-  pname = "payment";
-  version = "0.1.2";
-  src = fetchgitPrivate {
-    url = "ssh://git@phabricator.monstercat.com/diffusion/HBACK/haskell-backend.git";
-    rev = "7707e4bf8847ee9036c76cb9fb02578e8fa013bf";
-    sha256 = "1r1dv7yaalxja06jxqi7rjcdkb72mb2prnk8crzqap0gkmbahqc1";
-  };
-  buildDepends = (with customHaskellPackages; [
-    Decimal
-    MissingH
-    QuickCheck
-    aeson
-    aeson-pretty
-    ansi-wl-pprint
-    async
-    attoparsec
-    base
-    bytestring
-    cased
-    cassava
-    data-default
-    directory
-    filepath
-    flexible
-    flexible-instances
-    foldl
-    hashable
-    keys
-    lens
-    lens-aeson
-    lifted-base
-    money
-    monstercat-backend
-    mtl
-    options
-    parsec
-    pipes
-    pipes-bytestring
-    pipes-csv
-    pipes-safe
-    random
-    safe
-    syb
-    text
-    time
-    transformers
-    unordered-containers
-    uuid
-    yaml
-  ]);
-  license = stdenv.lib.licenses.bsd3;
+    callPackage = haskellPackages.callPackage;
+in callPackage ./payment.nix {
+  inherit (monstercatpkgs.haskellPackages)
+    flexible flexible-instances money;
 }

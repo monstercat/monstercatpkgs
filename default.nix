@@ -11,27 +11,28 @@ let
   callHsPackage = hp.callPackage;
   overrideCabal = pkgs_.haskell.lib.overrideCabal;
   callPackage = pkgs_.callPackage;
-in {
-  csv-delim = callPackage ./pkgs/csv-delim/default.nix {};
+  monstercatpkgs = {
+    csv-delim = callPackage ./pkgs/csv-delim/default.nix {};
 
-  haskellPackages = rec {
-    csv-parser = callHsPackage ./pkgs/haskell/csv-parser.nix {};
+    haskellPackages = rec {
+      csv-parser = callHsPackage ./pkgs/haskell/csv-parser.nix {};
 
-    flexible = callHsPackage ./pkgs/haskell/flexible.nix {};
+      flexible = callHsPackage ./pkgs/haskell/flexible.nix {};
 
-    flexible-instances = callHsPackage ./pkgs/haskell/flexible-instances.nix {
-      inherit flexible;
+      flexible-instances = callHsPackage ./pkgs/haskell/flexible-instances.nix {
+        inherit flexible;
+      };
+
+      money = callHsPackage ./pkgs/haskell/money.nix {};
+
+      # monstercat-backend = callHsPackage ./pkgs/haskell/monstercat-backend.nix {
+      #   inherit flexible flexible-instances;
+      # };
+
+      payment = import ./pkgs/haskell/payment {
+        inherit monstercatpkgs;
+      };
+
     };
-
-    money = callHsPackage ./pkgs/haskell/money.nix {};
-
-    # monstercat-backend = callHsPackage ./pkgs/haskell/monstercat-backend.nix {
-    #   inherit flexible flexible-instances;
-    # };
-
-    # payment = callHsPackage ./pkgs/haskell/payment {
-    #   inherit flexible flexible-instances overrideCabal;
-    # };
-
   };
-}
+in monstercatpkgs
