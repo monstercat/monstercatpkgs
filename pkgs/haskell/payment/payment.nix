@@ -15,6 +15,7 @@
 mkDerivation {
   pname = "payment";
   version = "0.1.2";
+  doCheck = false;
   src = fetchgit {
     url = http://git.zero.monster.cat/payments;
     rev = "8606f62bcb4e2f84bb065bdd94840034c802c0ee";

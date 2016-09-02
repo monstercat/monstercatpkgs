@@ -6,15 +6,6 @@
 let pkgs = nixpkgs.pkgs;
     overrideCabal = pkgs.haskell.lib.overrideCabal;
     haskellOverrides = super: {
-      postgresql-simple = overrideCabal super.postgresql-simple (attrs: {
-        # src = /home/jb55/dev/haskell/postgresql-simple;
-        src = pkgs.fetchFromGitHub {
-          owner  = "jb55";
-          repo   = "postgresql-simple";
-          rev    = "0e93ae2040f360fa624f031930b45728b110e155";
-          sha256 = "04npgh3sxdnhlc5864d6m9raz47sr9awgydni0837ysmdr9zj17d";
-        };
-      });
       pipes-postgresql-simple = overrideCabal super.pipes-postgresql-simple (attrs: {
         src = pkgs.fetchFromGitHub {
           owner  = "jb55";
