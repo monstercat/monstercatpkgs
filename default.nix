@@ -5,6 +5,7 @@ let
   stdenv = pkgs_.stdenv;
   nixpkgs = import <nixpkgs> {};
   jb55pkgs = import <jb55pkgs> {};
+
   pkgs_ = if pkgs == null then nixpkgs.pkgs else pkgs;
   hp = if haskellPackages == null
          then pkgs_.haskellPackages
@@ -12,6 +13,7 @@ let
   callHsPackage = hp.callPackage;
   overrideCabal = pkgs_.haskell.lib.overrideCabal;
   callPackage = pkgs_.callPackage;
+
   monstercatpkgs = rec {
     csv-delim = callPackage ./pkgs/csv-delim {};
 
