@@ -29,6 +29,8 @@ let
       #   inherit flexible flexible-instances;
       # };
 
+      report-downloader = callHsPackage ./pkgs/haskell/report-downloader { };
+
       payment = import ./pkgs/haskell/payment {
         inherit monstercatpkgs;
       };
