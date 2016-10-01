@@ -20,7 +20,7 @@ stdenv.mkDerivation rec {
   makeFlags = "PREFIX=$(out)";
 
   installPhase = ''
-    for bin in "$out"/bin/tunecore-transaction-bot; do
+    for bin in "$out"/bin/*; do
       wrapProgram "$bin" \
         --prefix "PATH" : "$out/bin:${scriptEnv}/bin"
     done
