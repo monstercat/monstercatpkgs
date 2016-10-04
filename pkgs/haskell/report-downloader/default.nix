@@ -3,11 +3,11 @@
 }:
 mkDerivation rec {
   pname = "report-downloader";
-  version = "0.2.2";
+  version = "0.3";
   src = fetchgit {
     url = http://git.zero.monster.cat/report-downloader;
-    rev = "53ecfc15d11242b919634506ac180017ffb3697b";
-    sha256 = "1x2p67qlwdpl8lnc9xmiv1yahgf5jfqzi181knmdvv2m4x7ns7gv";
+    rev = "35295bb80362983c9284c9f5d96f1cea00609b19";
+    sha256 = "18b1nvffhkqy4d1rrn7p46jgj40qxyi7rhgh8nnr59hfyb3h9n90";
   };
   isLibrary = false;
   isExecutable = true;
