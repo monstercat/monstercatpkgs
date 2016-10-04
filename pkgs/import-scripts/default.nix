@@ -7,12 +7,12 @@ let scriptEnv = buildEnv {
 in
 stdenv.mkDerivation rec {
   name = "import-scripts-${version}";
-  version = "0.1";
+  version = "0.2";
 
   src = fetchgit {
     url = http://git.zero.monster.cat/import-scripts;
-    rev = "5208a925d6f661362f00524938f603aa6aabcdde";
-    sha256 = "1x0whna1rcbja950w72wf8rgf6rzic0vnizdmhsiwnwc5i798qlk";
+    rev = "4a0cbe5861df792eaab6894dbc30163a1148d8c4";
+    sha256 = "06zs10q727g9vfg1s1b6l87lfmvsz6a9hl6q9kbpx7n710fzlddk";
   };
 
   buildInputs = [ makeWrapper ];
@@ -20,7 +20,7 @@ stdenv.mkDerivation rec {
   makeFlags = "PREFIX=$(out)";
 
   installPhase = ''
-    for bin in "$out"/bin/*; do
+    for bin in "$out"/bin/{tunecore-transaction,trend,sales}-bot; do
       wrapProgram "$bin" \
         --prefix "PATH" : "$out/bin:${scriptEnv}/bin"
     done

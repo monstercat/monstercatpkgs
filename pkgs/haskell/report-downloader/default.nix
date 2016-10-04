@@ -15,5 +15,5 @@ mkDerivation rec {
     base bytestring http-client http-client-tls lens taggy-lens text
     time wreq split http-types HTTP
   ];
-  license = stdenv.lib.licenses.unfree;
+  license = stdenv.lib.licenses.mit;
 }
