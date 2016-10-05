@@ -11,8 +11,8 @@ stdenv.mkDerivation rec {
 
   src = fetchgit {
     url = http://git.zero.monster.cat/import-scripts;
-    rev = "4a0cbe5861df792eaab6894dbc30163a1148d8c4";
-    sha256 = "06zs10q727g9vfg1s1b6l87lfmvsz6a9hl6q9kbpx7n710fzlddk";
+    rev = "9f24ec2843a886a12342c4958c0f5aab76618650";
+    sha256 = "1pcmj9gfyvcxhmvv5c9bnx7b0kw83hm6hkixlf6yfrvr3jgpxz2h";
   };
 
   buildInputs = [ makeWrapper ];
