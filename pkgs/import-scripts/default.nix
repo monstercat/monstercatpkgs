@@ -1,8 +1,10 @@
 { stdenv, fetchgit, ledger, csv-scripts, csv-delim, report-downloader,
-  postgresql, gawk, makeWrapper, buildEnv }:
+  postgresql, gawk, makeWrapper, buildEnv, pxz, s3cmd }:
 let scriptEnv = buildEnv {
                   name = "import-scripts-env";
-                  paths = [ csv-scripts csv-delim ledger postgresql gawk report-downloader ];
+                  paths = [ csv-scripts csv-delim ledger postgresql gawk
+                            pxz report-downloader s3cmd
+                          ];
                 };
 in
 stdenv.mkDerivation rec {
