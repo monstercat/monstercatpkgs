@@ -9,12 +9,12 @@ let scriptEnv = buildEnv {
 in
 stdenv.mkDerivation rec {
   name = "import-scripts-${version}";
-  version = "0.4.2";
+  version = "0.4.3";
 
   src = fetchgit {
     url = http://git.zero.monster.cat/import-scripts;
-    rev = "14b36e778bb8ac5ed637f93d02de59e5b5591138";
-    sha256 = "1krk0f6bs48jkhjrjgfmrqhhbg9zdnr4mr07sn82lf6p2xvsslpi";
+    rev = "242517adb90dbe94ad70db0dca73bfe0111c8dbc";
+    sha256 = "10ki3g1i2h1bbnaga0lpswbgmkq0s0wqfwd96xfvq2hzca2apb4r";
   };
 
   buildInputs = [ makeWrapper ];
