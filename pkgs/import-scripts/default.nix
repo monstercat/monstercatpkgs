@@ -1,20 +1,20 @@
 { stdenv, fetchgit, ledger, csv-scripts, csv-delim, report-downloader,
-  postgresql, gawk, makeWrapper, buildEnv, pxz, s3cmd }:
+  postgresql, gawk, makeWrapper, buildEnv, pxz, s3cmd, glibc }:
 let scriptEnv = buildEnv {
                   name = "import-scripts-env";
                   paths = [ csv-scripts csv-delim ledger postgresql gawk
-                            pxz report-downloader s3cmd
+                            pxz report-downloader s3cmd glibc
                           ];
                 };
 in
 stdenv.mkDerivation rec {
   name = "import-scripts-${version}";
-  version = "0.4.1";
+  version = "0.4.2";
 
   src = fetchgit {
     url = http://git.zero.monster.cat/import-scripts;
-    rev = "59d9abef852b697e52b188f9539fe51d11ca9fc7";
-    sha256 = "1ypfwmc8fdprs8k8lyqgi8ivfrmzgwcpr6769am45g8wd121645k";
+    rev = "14b36e778bb8ac5ed637f93d02de59e5b5591138";
+    sha256 = "1krk0f6bs48jkhjrjgfmrqhhbg9zdnr4mr07sn82lf6p2xvsslpi";
   };
 
   buildInputs = [ makeWrapper ];
