@@ -1,9 +1,9 @@
 { pkgs ? null
 , haskellPackages ? null
+, nixpkgs ? import <nixpkgs> {}
 }:
 let
   stdenv = pkgs_.stdenv;
-  nixpkgs = import <nixpkgs> {};
   jb55pkgs = import <jb55pkgs> {};
 
   pkgs_ = if pkgs == null then nixpkgs.pkgs else pkgs;
