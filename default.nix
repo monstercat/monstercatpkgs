@@ -19,7 +19,7 @@ let
 
     import-scripts = callPackage ./pkgs/import-scripts {
       inherit (jb55pkgs) csv-delim csv-scripts;
-      inherit (haskellPackages) report-downloader;
+      inherit (haskellPackages) report-downloader tunecore2ledger;
     };
 
     haskellPackages = rec {

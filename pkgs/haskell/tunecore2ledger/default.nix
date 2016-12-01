@@ -7,8 +7,8 @@ mkDerivation {
   version = "0.1.0.0";
   src = fetchgit {
     url = http://git.zero.monster.cat/tunecore2ledger;
-    rev = "c5432c88984839a04eed6332a49d2f6f8771e61b";
-    sha256 = "0b7hlm51wajk8hxj3xb66cd73m9y90bgzwk0xdgwzzzcxhkc73xm";
+    rev = "13e74d17a15fa5b5d8d14f5d67c04b1575e128f0";
+    sha256 = "1bfayd51120hh0pjiqzc8n5ca2xl658b7k6lm12h6rxz4xis3dh8";
   };
   isLibrary = false;
   isExecutable = true;
