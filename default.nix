@@ -39,6 +39,8 @@ let
 
       report-downloader = callHsPackage ./pkgs/haskell/report-downloader { };
 
+      tunecore2ledger = callHsPackage ./pkgs/haskell/tunecore2ledger {};
+
       payment = import ./pkgs/haskell/payment {
         inherit monstercatpkgs;
       };
