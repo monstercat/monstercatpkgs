@@ -22,6 +22,8 @@ let
       inherit (haskellPackages) report-downloader tunecore2ledger;
     };
 
+    mcat-tools = callPackage ./pkgs/mcat-tools {};
+
     haskellPackages = rec {
       csv-parser = callHsPackage ./pkgs/haskell/csv-parser.nix {};
 
