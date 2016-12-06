@@ -24,6 +24,10 @@ let
 
     mcat-tools = callPackage ./pkgs/mcat-tools {};
 
+    payments-server = callPackage ./pkgs/payments/server {};
+    payments-client = callPackage ./pkgs/payments/client {};
+    payments-processor = haskellPackages.payment;
+
     haskellPackages = rec {
       csv-parser = callHsPackage ./pkgs/haskell/csv-parser.nix {};
 
