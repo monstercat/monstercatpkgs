@@ -13,8 +13,8 @@ stdenv.mkDerivation rec {
 
   src = fetchgit {
     url = http://git.zero.monster.cat/import-scripts;
-    rev = "3f24101be2feec071d97186cdd5dc371a5a49a71";
-    sha256 = "07k9a40gj6aqcl6sdh5zmivrv3c0ld99fv421q2cy7qgrj3fa74j";
+    rev = "b4f3b1a9ef719d5a7065045eee72916d0e4019fd";
+    sha256 = "1kddyhxlfwzfkmqkqiwwypgxcygy2vipjm32vzcba2b5bf5ia424";
   };
 
   buildInputs = [ makeWrapper ];
