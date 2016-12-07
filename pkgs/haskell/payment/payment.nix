@@ -11,15 +11,16 @@
 , semigroups, split, stdenv, syb, tasty, tasty-hspec
 , template-haskell, text, time, transformers, transformers-base
 , unordered-containers, uuid, vector, word8, yaml, fetchgit
+, pipes-shell, system-filepath, turtle, virtual-sheet-drive
 }:
 mkDerivation {
   pname = "payment";
-  version = "0.1.2";
+  version = "3.0.0";
   doCheck = false;
   src = fetchgit {
     url = http://git.zero.monster.cat/payments;
-    rev = "49802084f3092921b56c4b02b9b49acb4477dc57";
-    sha256 = "0714hcf03hd0c3qlsh4ixdmmp11hdrhmv9v3wx7kd03iw28pqkpa";
+    rev = "439e9faea0b8a287a35976d97062aa1d3a4169c6";
+    sha256 = "10j8sipj953zm1q0zcnc8p8my6avai3gdcbml533m33kcm387sa2";
   };
   isLibrary = true;
   isExecutable = true;
@@ -34,7 +35,8 @@ mkDerivation {
     pipes-postgresql-simple pipes-safe pointed postgresql-simple pretty
     profunctors QuickCheck random safe semigroupoids semigroups split
     syb template-haskell text time transformers transformers-base
-    unordered-containers uuid vector word8 yaml
+    unordered-containers uuid vector word8 yaml pipes-shell system-filepath
+    turtle
   ];
   executableHaskellDepends = [
     aeson aeson-pretty ansi-wl-pprint async attoparsec base bytestring
@@ -44,8 +46,9 @@ mkDerivation {
     pipes pipes-bytestring pipes-csv pipes-postgresql-simple pipes-safe
     pointed pretty profunctors random safe semigroupoids semigroups
     split syb text time transformers unordered-containers uuid vector
-    word8 yaml
+    word8 yaml virtual-sheet-drive pipes-shell system-filepath turtle
   ];
   testHaskellDepends = [ base hspec QuickCheck tasty tasty-hspec ];
   license = stdenv.lib.licenses.bsd3;
 }
+

@@ -24,6 +24,8 @@ let
 
     mcat-tools = callPackage ./pkgs/mcat-tools {};
 
+    virtual-sheet-drive = callPackage ./pkgs/virtual-sheet-drive {};
+
     payments-server = callPackage ./pkgs/payments/server {};
     payments-client = callPackage ./pkgs/payments/client {};
     payments-processor = haskellPackages.payment;
@@ -47,9 +49,7 @@ let
 
       tunecore2ledger = callHsPackage ./pkgs/haskell/tunecore2ledger {};
 
-      payment = import ./pkgs/haskell/payment {
-        inherit monstercatpkgs;
-      };
+      payment = import ./pkgs/haskell/payment { };
 
     };
   };
