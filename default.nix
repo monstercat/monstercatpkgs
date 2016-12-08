@@ -29,6 +29,7 @@ let
     payments-server = callPackage ./pkgs/payments/server {};
     payments-client = callPackage ./pkgs/payments/client {};
     payments-processor = haskellPackages.payment;
+    payments-parsers = callPackage ./pkgs/payments/parsers { inherit payments-processor; };
 
     haskellPackages = rec {
       csv-parser = callHsPackage ./pkgs/haskell/csv-parser.nix {};
