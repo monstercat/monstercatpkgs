@@ -11,8 +11,8 @@ let
   };
   src = pkgs.fetchgit {
     url = http://git.zero.monster.cat/payments-server;
-    rev = "d4409a996f7c3c6c3e2d6ede0e0c97765ebfa106";
-    sha256 = "0vhh2xd93y1xkb4kh2md3j3wn1h09v68acwriqimgc5vmhbxw2rv";
+    rev = "b665d6c4ec34de111e699eed34a05ebdb04615e4";
+    sha256 = "07vhvqhqnp7xkaym09xd8k6hry5h5168xkjm32jxx2vdvgcam4vb";
   };
 in
 (import ./node-packages.nix {

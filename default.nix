@@ -30,6 +30,9 @@ let
     payments-client = callPackage ./pkgs/payments/client {};
     payments-processor = haskellPackages.payment;
     payments-parsers = callPackage ./pkgs/payments/parsers { inherit payments-processor; };
+    payment-scripts = callPackage ./pkgs/payment-scripts {
+      inherit payments-processor virtual-sheet-drive;
+    };
 
     haskellPackages = rec {
       csv-parser = callHsPackage ./pkgs/haskell/csv-parser.nix {};

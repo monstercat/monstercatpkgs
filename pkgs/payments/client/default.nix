@@ -8,8 +8,8 @@ stdenv.mkDerivation {
 
   src = fetchgit {
     url = http://git.zero.monster.cat/payments-client;
-    rev = "79eec2f4557128fd1e521865a79236bcd3fe124b";
-    sha256 = "1yiawcin9bn4pylna8m0pqqfkfflsfiksbnjchyb6225y5s3s314";
+    rev = "073133609a1797af3f3655b25e104fe949b255b1";
+    sha256 = "1sfvpzz02irv30dv05xfnghk9hm4v61byqkr6fnb62sx4chqay25";
   };
 
   buildPhase = ''
