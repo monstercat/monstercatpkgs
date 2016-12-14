@@ -55,26 +55,26 @@ let pkgs = nixpkgs.pkgs;
     };
     callPackage = haskellPackages.callPackage;
     mcatPkgs = import <monstercatpkgs> { inherit haskellPackages; };
-    projectEnv = (callPackage ./payment.nix {
+    project = callPackage ./payment.nix {
       inherit (mcatPkgs.haskellPackages)
         flexible flexible-instances money;
-    }).env;
+    };
     stdenv = nixpkgs.stdenv;
     drv = stdenv.mkDerivation rec {
       name = "payments-${version}";
       version = "3.0";
 
-      src = ./.;
+      src = project.src;
 
       makeFlags = "PREFIX=$(out)";
 
       buildPhase = ''
-        ${projectEnv.shellHook}
+        ${project.env.shellHook}
 
         make -j$NIX_BUILD_CORES
       '';
 
-      buildInputs = projectEnv.nativeBuildInputs;
+      buildInputs = project.env.nativeBuildInputs;
     };
 in
-  { inherit drv; env = projectEnv; }
+  drv

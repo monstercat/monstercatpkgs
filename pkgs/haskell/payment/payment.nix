@@ -11,7 +11,7 @@
 , semigroups, split, stdenv, syb, tasty, tasty-hspec
 , template-haskell, text, time, transformers, transformers-base
 , unordered-containers, uuid, vector, word8, yaml, fetchgit
-, pipes-shell, system-filepath, turtle, virtual-sheet-drive
+, pipes-shell, system-filepath, turtle
 }:
 mkDerivation {
   pname = "payment";
@@ -19,8 +19,8 @@ mkDerivation {
   doCheck = false;
   src = fetchgit {
     url = http://git.zero.monster.cat/payments;
-    rev = "81d25bd7dbcef4944c67060f8d4e693c9f887176";
-    sha256 = "0n63dclj5r3wmwa5nrb632s36fyk9izg5fw8s912sj9y5cvkwf4z";
+    rev = "3a0df4752bb755bd285e04498e43d49f9bcb3161";
+    sha256 = "0fhyh2vd35vr5w14m0kc0s8aa1i0hbkjriyaiff8866r3bcil8hi";
   };
   isLibrary = true;
   isExecutable = true;
@@ -46,7 +46,7 @@ mkDerivation {
     pipes pipes-bytestring pipes-csv pipes-postgresql-simple pipes-safe
     pointed pretty profunctors random safe semigroupoids semigroups
     split syb text time transformers unordered-containers uuid vector
-    word8 yaml virtual-sheet-drive pipes-shell system-filepath turtle
+    word8 yaml pipes-shell system-filepath turtle
   ];
   testHaskellDepends = [ base hspec QuickCheck tasty tasty-hspec ];
   license = stdenv.lib.licenses.bsd3;
