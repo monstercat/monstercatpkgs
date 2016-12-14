@@ -55,8 +55,26 @@ let pkgs = nixpkgs.pkgs;
     };
     callPackage = haskellPackages.callPackage;
     mcatPkgs = import <monstercatpkgs> { inherit haskellPackages; };
-in callPackage ./payment.nix {
-  inherit (mcatPkgs) virtual-sheet-drive;
-  inherit (mcatPkgs.haskellPackages)
-    flexible flexible-instances money;
-}
+    projectEnv = (callPackage ./payment.nix {
+      inherit (mcatPkgs.haskellPackages)
+        flexible flexible-instances money;
+    }).env;
+    stdenv = nixpkgs.stdenv;
+    drv = stdenv.mkDerivation rec {
+      name = "payments-${version}";
+      version = "3.0";
+
+      src = ./.;
+
+      makeFlags = "PREFIX=$(out)";
+
+      buildPhase = ''
+        ${projectEnv.shellHook}
+
+        make -j$NIX_BUILD_CORES
+      '';
+
+      buildInputs = projectEnv.nativeBuildInputs;
+    };
+in
+  { inherit drv; env = projectEnv; }
