@@ -11,6 +11,9 @@ let
          then pkgs_.haskellPackages
          else haskellPackages;
   callHsPackage = hp.callPackage;
+  hlib = pkgs_.haskell.lib;
+  callHsPackageBin = path: deps: callHsPackageBinBase hp.callPackage path deps;
+  callHsPackageBinBase = baseCall: path: deps: hlib.justStaticExecutables (hlib.linkWithGold (baseCall path deps));
   overrideCabal = pkgs_.haskell.lib.overrideCabal;
   callPackage = pkgs_.callPackage;
 
@@ -49,9 +52,13 @@ let
       #   inherit flexible flexible-instances;
       # };
 
-      report-downloader = callHsPackage ./pkgs/haskell/report-downloader { };
+      report-downloader = import ./pkgs/haskell/report-downloader {
+        inherit nixpkgs;
+        callPackageBase = callHsPackageBinBase;
+        baseHaskellPackages = hp;
+      };
 
-      tunecore2ledger = callHsPackage ./pkgs/haskell/tunecore2ledger {};
+      tunecore2ledger = callHsPackageBin ./pkgs/haskell/tunecore2ledger {};
 
       payment = import ./pkgs/haskell/payment { };
 
