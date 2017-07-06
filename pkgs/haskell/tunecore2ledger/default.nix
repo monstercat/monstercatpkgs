@@ -1,20 +1,20 @@
 { mkDerivation, base, blaze-builder, bytestring, cassava
 , formatting, lens, semigroupoids, semigroups, stdenv, text, time
-, vector, fetchgit
+, vector, fetchgit, split
 }:
-mkDerivation {
+mkDerivation rec {
   pname = "tunecore2ledger";
-  version = "0.1.0.0";
+  version = "0.4.12";
   src = fetchgit {
     url = http://git.zero.monster.cat/tunecore2ledger;
-    rev = "13e74d17a15fa5b5d8d14f5d67c04b1575e128f0";
-    sha256 = "1bfayd51120hh0pjiqzc8n5ca2xl658b7k6lm12h6rxz4xis3dh8";
+    rev = "dbd915c9c93076a2b2b2132af43b6c7b229a6e4a";
+    sha256 = "0srm8lpxysys00f17jyds8wrfv73aav6waxy3ll2ddwk7cccx23y";
   };
   isLibrary = false;
   isExecutable = true;
   executableHaskellDepends = [
     base blaze-builder bytestring cassava formatting lens semigroupoids
-    semigroups text time vector
+    semigroups text time vector split
   ];
   homepage = "monstercat.com";
   license = stdenv.lib.licenses.mit;
