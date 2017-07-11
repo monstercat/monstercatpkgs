@@ -16,7 +16,7 @@ let
   callHsPackageBinBase = baseCall: path: deps: hlib.justStaticExecutables (hlib.linkWithGold (baseCall path deps));
   overrideCabal = pkgs_.haskell.lib.overrideCabal;
   callPackage = pkgs_.callPackage;
-  callRemote = p: deps: pkgs_.callPackage ((import p) pkgs_.fetchgit) deps;
+  callRemote = p: deps: pkgs_.callPackage (pkgs_.callPackage p {}) deps;
 
   monstercatpkgs = rec {
     csv-delim = callPackage ./pkgs/csv-delim {};
