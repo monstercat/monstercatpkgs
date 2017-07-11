@@ -16,9 +16,12 @@ let
   callHsPackageBinBase = baseCall: path: deps: hlib.justStaticExecutables (hlib.linkWithGold (baseCall path deps));
   overrideCabal = pkgs_.haskell.lib.overrideCabal;
   callPackage = pkgs_.callPackage;
+  callRemote = p: deps: pkgs_.callPackage ((import p) pkgs_.fetchgit) deps;
 
   monstercatpkgs = rec {
     csv-delim = callPackage ./pkgs/csv-delim {};
+
+    youtube-sheet-scraper = callRemote ./pkgs/youtube-sheet-scraper {};
 
     import-scripts = callPackage ./pkgs/import-scripts {
       inherit (jb55pkgs) csv-delim csv-scripts;

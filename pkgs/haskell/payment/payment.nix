@@ -19,8 +19,8 @@ mkDerivation {
   doCheck = false;
   src = fetchgit {
     url = http://git.zero.monster.cat/payments;
-    rev = "3a0df4752bb755bd285e04498e43d49f9bcb3161";
-    sha256 = "0fhyh2vd35vr5w14m0kc0s8aa1i0hbkjriyaiff8866r3bcil8hi";
+    rev = "f13684c7c241ee655e92044bfd2d646c5fd3955a";
+    sha256 = "1kbzmmzxjb6ia7h026x8w55p6x8wy0nx7p2ap94naka0r34hfq3f";
   };
   isLibrary = true;
   isExecutable = true;
