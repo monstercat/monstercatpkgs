@@ -9,11 +9,12 @@ let
     inherit (pkgs) stdenv python2 utillinux runCommand writeTextFile;
     inherit nodejs;
   };
-  src = pkgs.fetchgit {
-    url = http://git.zero.monster.cat/payments-server;
-    rev = "b665d6c4ec34de111e699eed34a05ebdb04615e4";
-    sha256 = "07vhvqhqnp7xkaym09xd8k6hry5h5168xkjm32jxx2vdvgcam4vb";
-  };
+  # src = pkgs.fetchgit {
+  #   url = http://git.zero.monster.cat/payments-server;
+  #   rev = "9fa106bb1c637ceeb4fd7e7ad94ed7a41725bd2c";
+  #   sha256 = "0ic6nh4xnwpj4vbyxgfgs3r84f7q9v36lzf84hf9kr1ca455mhjx";
+  # };
+  src = /home/jb55/projects/monstercat/payments-server;
 in
 (import ./node-packages.nix {
   inherit (pkgs) fetchurl fetchgit;
