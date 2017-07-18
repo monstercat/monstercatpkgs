@@ -23,9 +23,10 @@ let
 
     youtube-sheet-scraper = callRemote ./pkgs/youtube-sheet-scraper {};
 
-    import-scripts = callPackage ./pkgs/import-scripts {
+    import-scripts = callRemote ./pkgs/import-scripts {
       inherit (jb55pkgs) csv-delim csv-scripts;
       inherit (haskellPackages) report-downloader tunecore2ledger;
+      inherit youtube-sheet-scraper;
     };
 
     mcat-tools = callPackage ./pkgs/mcat-tools {};
