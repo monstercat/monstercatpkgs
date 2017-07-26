@@ -25,7 +25,7 @@ let
 
     import-scripts = callRemote ./pkgs/import-scripts {
       inherit (jb55pkgs) csv-delim csv-scripts;
-      inherit (haskellPackages) report-downloader tunecore2ledger;
+      inherit report-downloader tunecore2ledger;
       inherit youtube-sheet-scraper;
     };
 
@@ -40,6 +40,9 @@ let
     payment-scripts = callPackage ./pkgs/payment-scripts {
       inherit payments-processor virtual-sheet-drive;
     };
+
+    report-downloader = haskellPackages.report-downloader;
+    tunecore2ledger = haskellPackages.tunecore2ledger;
 
     haskellPackages = rec {
       csv-parser = callHsPackage ./pkgs/haskell/csv-parser.nix {};
