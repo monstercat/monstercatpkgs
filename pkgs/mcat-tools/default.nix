@@ -9,7 +9,7 @@ stdenv.mkDerivation rec {
   version = "0.1.0";
 
   src = fetchgit {
-    url = http://git.zero.monster.cat/mcat-tools;
+    url = http://git.monster.cat/mcat-tools;
     rev = "bef1de529cbcd7b46398c0169cb1768e30434c87";
     sha256 = "14widfrbmkhfiscybhisaw20d6bnr9rjk9c6hbbwba427vkjmzmg";
   };

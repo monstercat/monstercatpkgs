@@ -11,7 +11,7 @@ stdenv.mkDerivation rec {
   version = "0.1.0";
 
   src = fetchgit {
-    url = http://git.zero.monster.cat/payment-scripts;
+    url = http://git.monster.cat/payment-scripts;
     rev = "6e43b69aa31bede922e9f58da3e75aedebd6eb1c";
     sha256 = "057h9hikaaqf1xgw3x4kpkc00mjsgd581nz99snndph8h5y5r5yq";
   };

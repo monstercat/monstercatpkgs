@@ -10,7 +10,7 @@ let
     inherit nodejs;
   };
   # src = pkgs.fetchgit {
-  #   url = http://git.zero.monster.cat/payments-server;
+  #   url = http://git.monster.cat/payments-server;
   #   rev = "9fa106bb1c637ceeb4fd7e7ad94ed7a41725bd2c";
   #   sha256 = "0ic6nh4xnwpj4vbyxgfgs3r84f7q9v36lzf84hf9kr1ca455mhjx";
   # };

@@ -10,7 +10,7 @@ stdenv.mkDerivation rec {
   version = "0.1.0";
 
   src = fetchgit {
-    url = http://git.zero.monster.cat/virtual-sheet-drive;
+    url = http://git.monster.cat/virtual-sheet-drive;
     rev = "40dbd6fd3373753856a66a101db3256f0edef2c2";
     sha256 = "085isg910cl8cfc9i1iw1qb7f2dfkgabjc4f9hb1qhs2cn1y29rb";
   };

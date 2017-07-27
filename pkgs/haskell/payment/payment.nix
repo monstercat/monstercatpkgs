@@ -18,7 +18,7 @@ mkDerivation {
   version = "3.0.0";
   doCheck = false;
   src = fetchgit {
-    url = http://git.zero.monster.cat/payments;
+    url = http://git.monster.cat/payments;
     rev = "f13684c7c241ee655e92044bfd2d646c5fd3955a";
     sha256 = "1kbzmmzxjb6ia7h026x8w55p6x8wy0nx7p2ap94naka0r34hfq3f";
   };

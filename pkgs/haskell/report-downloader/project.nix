@@ -24,7 +24,7 @@ mkDerivation rec {
   pname = "report-downloader";
   version = "0.4.4";
   src = fetchgit {
-    url = http://git.zero.monster.cat/report-downloader;
+    url = http://git.monster.cat/report-downloader;
     rev = "c182b04aad2ddcbf4bab0824d35f45ca70364b32";
     sha256 = "0bvzk0p6ckbg4yni78k62sy7hcgb4zrzjsbvl8kpfqmg6yfdbncs";
   };

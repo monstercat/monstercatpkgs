@@ -7,7 +7,7 @@ stdenv.mkDerivation {
   buildInputs = [ nodejs ];
 
   # src = fetchgit {
-  #   url = http://git.zero.monster.cat/payments-client;
+  #   url = http://git.monster.cat/payments-client;
   #   rev = "9febfa1652030cb76c0ed2e665f08fc5ab0267b6";
   #   sha256 = "012pkr0m8lpg1jsys1wk1vbbbjjf7xzbmdrvlc720x1l11lkay4b";
   # };
