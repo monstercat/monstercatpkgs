@@ -59,10 +59,8 @@ let
       #   inherit flexible flexible-instances;
       # };
 
-      report-downloader = import ./pkgs/haskell/report-downloader {
-        inherit nixpkgs;
-        callPackageBase = callHsPackageBinBase;
-        baseHaskellPackages = hp;
+      report-downloader = callPackage ./pkgs/haskell/report-downloader {
+        callHsPackage = callHsPackageBin;
       };
 
       tunecore2ledger = callHsPackageBin ./pkgs/haskell/tunecore2ledger {};
