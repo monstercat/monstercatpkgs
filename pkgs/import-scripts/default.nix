@@ -1,6 +1,6 @@
 { fetchgit }:
 fetchgit {
   url = "http://git.monster.cat/import-scripts";
-  rev = "f6872374ec63d8584bc8d553ba33813158e7d2f8";
-  sha256 = "1gsyayff0r8hp5v7c7crljbwyfzcyvm83hgppgwij6wfjka3d85a";
+  rev = "1dc12232148701af0d42eedda4cba6ac269069ef";
+  sha256 = "05ck59zlvwrjkiszf428jgd6s31841qxv9y7qky8bq8xwbjh8xn3";
 }
