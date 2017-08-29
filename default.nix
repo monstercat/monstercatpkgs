@@ -31,7 +31,7 @@ let
 
     mcat-tools = callPackage ./pkgs/mcat-tools {};
 
-    virtual-sheet-drive = callPackage ./pkgs/virtual-sheet-drive {};
+    virtual-sheet-drive = callRemote ./pkgs/virtual-sheet-drive {};
 
     payments-server = callPackage ./pkgs/payments/server {};
     payments-client = callPackage ./pkgs/payments/client {};
