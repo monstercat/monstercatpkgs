@@ -25,7 +25,7 @@ let
 
     import-scripts = callRemote ./pkgs/import-scripts {
       inherit (jb55pkgs) csv-delim csv-scripts;
-      inherit report-downloader tunecore2ledger;
+      inherit report-downloader tunecore2ledger virtual-sheet-drive;
       inherit youtube-sheet-scraper;
     };
 
