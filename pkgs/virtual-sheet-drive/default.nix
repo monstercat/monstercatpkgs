@@ -1,6 +1,6 @@
 { fetchgit }:
 fetchgit {
   url = "http://git.monster.cat/virtual-sheet-drive";
-  rev = "3f6dfeb3551ed803e93dd934982245445ed33e7e";
-  sha256 = "10z5aq7h789pm7ybfwxf08q6r7556g7wpy17c4abvjizxli0rbx2";
+  rev = "5cb988a5beb0f8c0b264d8daa4f84ddc0a389936";
+  sha256 = "078wyd2zx4isfg4cjhk648d9pv4s9pqa61m35d3s0s1klq4v718w";
 }
