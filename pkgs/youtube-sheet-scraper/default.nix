@@ -1,6 +1,6 @@
 { fetchgit }:
 fetchgit {
   url = "http://git.monster.cat/youtube-sheet-scraper";
-  rev = "b8efe572738c01b1d9bbd9f55c4fe04d992aeb2c";
-  sha256 = "1cs7hkq2x5206979xra8v604v470i9nsds6ddcl9i0p31ab62waz";
+  rev = "c49556b92b35019d9ab7dbccf12e21e349580f10";
+  sha256 = "0nzy185jr2wj3213pq825khr8pq99p6dcamv4q9dax3qhz19xw5z";
 }
