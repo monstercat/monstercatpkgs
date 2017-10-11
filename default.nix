@@ -29,7 +29,7 @@ let
       inherit youtube-sheet-scraper;
     };
 
-    mcat-tools = callPackage ./pkgs/mcat-tools {};
+    mcat-tools = callRemote ./pkgs/mcat-tools {};
 
     virtual-sheet-drive = callRemote ./pkgs/virtual-sheet-drive {};
 
