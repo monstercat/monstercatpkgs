@@ -1,6 +1,6 @@
 { callHsPackage, fetchgit }:
 callHsPackage (fetchgit {
   url = http://git.monster.cat/report-downloader;
-  rev = "df5dbb044ab3fb35255c0685f606b65133822e24";
-  sha256 = "12r80ad9r4l4vsmc6dczcjn93wp7awfs4y1r0yagvmwdqnk96lpv";
+  rev = "6a9d4139a7a7fa2accbd98b8604c3123b131a781";
+  sha256 = "1f40x5q14cs3rsy4sl3r7vdzvabjjbm53fs5mibi6ncxa7rzal1m";
 }) {}
