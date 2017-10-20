@@ -26,7 +26,11 @@ let
     import-scripts = callRemote ./pkgs/import-scripts {
       inherit (jb55pkgs) csv-delim csv-scripts curlc;
       inherit report-downloader tunecore2ledger virtual-sheet-drive;
-      inherit youtube-sheet-scraper;
+      inherit itunes-processor youtube-sheet-scraper;
+    };
+
+    itunes-processor = callPackage ./pkgs/itunes-processor {
+      callHsPackage = callHsPackageBin;
     };
 
     mcat-tools = callRemote ./pkgs/mcat-tools {};
