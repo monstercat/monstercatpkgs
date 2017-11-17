@@ -1,6 +1,6 @@
 { callHsPackage, fetchgit }:
 callHsPackage (fetchgit {
   url = "http://git.monster.cat/itunes-processor";
-  rev = "04ab5dc84c71a88f494c1dd29918760cb3916339";
-  sha256 = "1zwslnf2pbxs85p6zs14zi2fzbgk3dyh6d3gr0rn8rd4d956px2y";
+  rev = "e428c7e22d805aa493c6baae82e58eb207cc622c";
+  sha256 = "1rd5zvf6m2fwvfklxjw6g09adqs98vn47rjikl56kaxyrsfak4i6";
 }) {}
